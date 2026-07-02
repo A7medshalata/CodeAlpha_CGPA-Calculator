@@ -1,0 +1,61 @@
+# include <iostream>
+#include <vector>
+#include <iomanip>
+using namespace std;
+
+struct course
+{
+    double Grade;
+    int credithours;
+};
+
+int main(){
+
+int numCourses;
+
+cout << "-------------------------------------" << endl;
+cout << "    Welcome to CGPA calculator       " << endl;
+cout << "-------------------------------------" << endl;
+
+cout << "Enter number of courses:" ;
+cin >> numCourses;
+vector<course> courses(numCourses);
+
+double totalgradepoint = 0.0;
+int totalcredits = 0;
+
+for(int i =0; i <numCourses; i++){
+    cout << "\n--- Course " << (i+1) << "---" <<endl;
+
+    cout << "Enter Grade point (e.g.,4.0 for A,3.0 for B:)";
+    cin>>courses[i].Grade;
+
+    cout << "Enter Credit Hours for this coruse:" << endl;
+    cin>>courses[i].credithours;
+
+
+    totalgradepoint += (courses[i].Grade*courses[i].credithours);
+    totalcredits += courses[i].credithours;
+}
+
+double CGPA = totalgradepoint / totalcredits;
+
+cout << "--------------------------------------"<< endl;
+cout << "            SUMMARY REPORT            "<< endl;
+cout << "--------------------------------------"<< endl;
+
+for(int i=0; i < numCourses; i++){
+    cout << "course:" << (i+1)<< endl;
+    cout<< "Grade:"<< courses[i].Grade<< endl;
+    cout << "Credit Hours:"<< courses[i].credithours << endl;
+    
+    cout <<"-----------------------------------"<< endl;
+    cout << "Total Credits Earned:" << totalcredits << endl;
+
+    cout << fixed << setprecision(2);
+    cout << "Your Final Cumlative GPA(CGPA) is: " << CGPA << endl;
+    cout <<"-----------------------------------" <<endl;
+
+}
+    return 0 ;
+}
